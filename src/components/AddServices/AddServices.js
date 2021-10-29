@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useFirebase from "../../hooks/useFirebase";
 
 const AddServices = () => {
   const { register, handleSubmit } = useForm();
+  const { user } = useFirebase();
   const onSubmit = (data) => {
     fetch("http://localhost:5000/addServices", {
       method: "POST",
