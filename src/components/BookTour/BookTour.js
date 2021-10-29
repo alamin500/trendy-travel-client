@@ -40,19 +40,9 @@ const BookTour = () => {
           </div>
         </div>
       </div>
-      {user?.email ? (
-        <Link to="/confirmOrder">
-          <button className="btn btn-warning">
-            Appointment {value?.name.toLowerCase()}
-          </button>
-        </Link>
-      ) : (
-        <Link to="/login">
-          <button className="btn btn-warning">
-            Appointment {value?.name.toLowerCase()}
-          </button>
-        </Link>
-      )}
+      <Link to="/confirmOrder" className="btn btn-warning">
+        Place Order {value?.name.toLowerCase()}
+      </Link>
     </div>
   );
 };

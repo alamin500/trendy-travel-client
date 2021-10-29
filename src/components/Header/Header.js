@@ -6,6 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useFirebase();
+  console.log(user.displayName);
   return (
     <div>
       <h1>This is Header</h1>
@@ -17,19 +18,20 @@ const Header = () => {
             <Link to="/services">Services</Link>
             <Link to="/addServices">Add Services</Link>
             <Link to="/mybook">My booking</Link>
-            {!user?.email && <Link to="/login">Login</Link>}
-            <span className="displayname">{user.displayName}</span>
-            {user?.email && (
-              <button className="logout-btn" onClick={logOut}>
-                {" "}
-                Log Out
-              </button>
-            )}
+
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#features">Features</Nav.Link>
                 <Nav.Link href="#pricing">Pricing</Nav.Link>
+                {!user?.email && <Link to="/login">Login</Link>}
+                <span className="displayname">{user.displayName}</span>
+                {user?.email && (
+                  <button className="logout-btn" onClick={logOut}>
+                    {" "}
+                    Log Out
+                  </button>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>
