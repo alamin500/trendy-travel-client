@@ -17,8 +17,21 @@ const BookTour = () => {
       .then((data) => setServices(data));
   }, []);
   const value = services.filter((service) => service._id == tourId)[0];
-  console.log(value);
-  // const { description, name, img } = value;
+  console.log(data);
+  const { description, name, img, price } = value;
+  const data = { description, name, img, price };
+  const myBook = (data) => {
+    data.email = user?.email;
+    fetch("http://localhost:5000/myBook", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+    console.log(data);
+  };
+
   return (
     <div>
       <div className="d-flex container justify-content-center align-items-center">
@@ -41,7 +54,10 @@ const BookTour = () => {
         </div>
       </div>
       <Link to="/confirmOrder" className="btn btn-warning">
-        Place Order {value?.name.toLowerCase()}
+        <button onClick={myBook}>
+          {" "}
+          Place Order {value?.name.toLowerCase()}
+        </button>
       </Link>
     </div>
   );
