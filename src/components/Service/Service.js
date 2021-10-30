@@ -23,7 +23,7 @@ const Service = ({ service }) => {
             </button>
           </Link>
         ) : (
-          <Link to="/login">
+          <Link to={`/login/${_id}`}>
             <button className="btn btn-warning">
               Book {name.toLowerCase()}
             </button>

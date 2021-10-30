@@ -1,18 +1,19 @@
 import React from "react";
+
 import { useEffect } from "react";
 import { useState } from "react";
-import useFirebase from "../../hooks/useFirebase";
+// import useFirebase from "../../hooks/useFirebase";
 
-const MyBooking = () => {
-  const { user } = useFirebase();
+const ManageAllOrders = () => {
+  // const { user } = useFirebase();
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
   console.log(books);
   useEffect(() => {
-    fetch(`http://localhost:5000/myBooks/${user?.email}`)
+    fetch(`http://localhost:5000/myBooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
-  }, [user.email, control]);
+  }, [control]);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteEvent/${id}`, {
@@ -31,7 +32,7 @@ const MyBooking = () => {
   };
   return (
     <div>
-      <h1>My books : {books.length}</h1>
+      <h1>Manage All Orders</h1>
       {books.map((book) => (
         <div className="row ">
           <div className="col-12 col-sm-6 col-lg-3 service-card d-flex justify-content-center align-items-center">
@@ -52,4 +53,4 @@ const MyBooking = () => {
   );
 };
 
-export default MyBooking;
+export default ManageAllOrders;

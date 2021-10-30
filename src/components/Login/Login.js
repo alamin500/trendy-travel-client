@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import useFirebase from "../../hooks/useFirebase";
+import { useParams } from "react-router";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { getAuth } from "@firebase/auth";
 import { useEffect } from "react";
 
 const Login = () => {
   const { googleSignIn } = useFirebase();
-
+  const { tourId } = useParams();
+  console.log(tourId);
   const auth = getAuth();
 
   const location = useLocation();
@@ -17,9 +19,9 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
-
+  const value = services.filter((service) => service._id === tourId)[0];
   const history = useHistory();
-  const redirect_uri = location.state?.from || `/bookTour/${services._id}`;
+  const redirect_uri = location.state?.from || `/bookTour/${value?._id}`;
   const handleGoogleLogin = () => {
     googleSignIn().then((result) => {
       history.push(redirect_uri);
