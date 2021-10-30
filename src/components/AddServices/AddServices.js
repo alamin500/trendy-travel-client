@@ -6,7 +6,7 @@ const AddServices = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useFirebase();
   const onSubmit = (data) => {
-    data.email = user?.email;
+    // data.email = user?.email;
     fetch("http://localhost:5000/addServices", {
       method: "POST",
       headers: { "content-type": "application/json" },

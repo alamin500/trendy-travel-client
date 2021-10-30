@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
@@ -6,7 +6,13 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useFirebase();
+  const [books, setBooks] = useState([]);
   console.log(user.displayName);
+  useEffect(() => {
+    fetch(`http://localhost:5000/myBooks/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, [user.email]);
   return (
     <div>
       <h1>This is Header</h1>
@@ -17,7 +23,9 @@ const Header = () => {
 
             <Link to="/services">Services</Link>
             <Link to="/addServices">Add Services</Link>
-            <Link to="/mybook">My booking</Link>
+            <Link to="/mybook" className="position-relative my-book">
+              My booking <p className="position-absolute">{books.length}</p>
+            </Link>
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">

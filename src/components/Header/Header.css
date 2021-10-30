@@ -4,3 +4,15 @@ Link {
 .displayname {
   color: aliceblue;
 }
+.my-book p {
+  height: 23px;
+  width: 23px;
+  background: green;
+  top: -13px;
+  right: -11px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
