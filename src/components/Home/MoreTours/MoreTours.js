@@ -28,13 +28,13 @@ const MoreTours = () => {
             alt=""
           />
           <div className="link text-start">
-            <h4 className="title-tour">World Tour</h4>
+            <h4 className="title-tour">Cruises</h4>
             <p>
-              A concert tour is a series of concerts by an artist or group of
-              artists in different cities, countries or locations. Often concert
-              tours are named to
+              Princess gives you the chance to be in awe of the world again.
+              Take a cruise vacation to the Caribbean, Alaska, Europe & many
+              more destinations.
             </p>
-            <a href="">Cruises</a>
+            <a href="">View More</a>
           </div>
         </div>
         <div className=" d-flex col-12 col-sm-6 col-lg-4">
@@ -46,9 +46,9 @@ const MoreTours = () => {
           <div className=" link text-start">
             <h4 className="title-tour">Best Tours</h4>
             <p>
-              A concert tour is a series of concerts by an artist or group of
-              artists in different cities, countries or locations. Often concert
-              tours are named to
+              Often concert tours are named to. A concert tour is a series of
+              concerts by an artist or group of artists in different cities,
+              countries or locations.
             </p>
             <a href="">View More</a>
           </div>

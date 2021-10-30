@@ -21,13 +21,13 @@ const Service = ({ service }) => {
 
           {user?.email ? (
             <Link to={`/bookTour/${_id}`}>
-              <button className="btn m-2 btn-danger">
+              <button className="btn m-2 btn-success">
                 Book {name.toLowerCase()}
               </button>
             </Link>
           ) : (
             <Link to={`/login/${_id}`}>
-              <button className="btn m-2 btn-danger">
+              <button className="btn m-2 btn-success">
                 BOOK {name.toLowerCase()}
               </button>
             </Link>
