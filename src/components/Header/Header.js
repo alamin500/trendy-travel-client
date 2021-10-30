@@ -15,7 +15,6 @@ const Header = () => {
   }, [user.email]);
   return (
     <div>
-      <h1>This is Header</h1>
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
@@ -26,6 +25,7 @@ const Header = () => {
             <Link to="/mybook" className="position-relative my-book">
               My booking <p className="position-absolute">{books.length}</p>
             </Link>
+            <Link to="/allBooks">All Books</Link>
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">

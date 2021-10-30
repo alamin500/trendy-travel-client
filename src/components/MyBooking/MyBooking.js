@@ -15,7 +15,7 @@ const MyBooking = () => {
   }, [user.email, control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteEvent/${id}`, {
+    fetch(`http://localhost:5000/deleteBook/${id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })

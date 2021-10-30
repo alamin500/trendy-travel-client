@@ -2,21 +2,23 @@ import React from "react";
 
 import { useEffect } from "react";
 import { useState } from "react";
+import { Form } from "react-bootstrap";
 // import useFirebase from "../../hooks/useFirebase";
 
-const ManageAllOrders = () => {
+const ManageAllBooks = () => {
   // const { user } = useFirebase();
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
+  const [admin, setAdmin] = useState(false);
   console.log(books);
   useEffect(() => {
-    fetch(`http://localhost:5000/myBooks`)
+    fetch(`http://localhost:5000/allBooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, [control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteEvent/${id}`, {
+    fetch(`http://localhost:5000/deleteBook/${id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })
@@ -32,6 +34,17 @@ const ManageAllOrders = () => {
   };
   return (
     <div>
+      {/* < Form.Check label="Remember me" /> */}
+      <input
+        type="checkbox"
+        id="vehicle1"
+        name="vehicle1"
+        value="Bike"
+        onClick={() => setAdmin(!admin)}
+      />
+      <label for="vehicle1">Admin</label>
+      <br />
+
       <h1>Manage All Orders</h1>
       {books.map((book) => (
         <div className="row ">
@@ -39,12 +52,14 @@ const ManageAllOrders = () => {
             <div>
               <img src={book.img} alt="" />
               <h1>{book.name}</h1>
-              <button
-                className="btn btn-danger "
-                onClick={() => handleDelete(book._id)}
-              >
-                Delete
-              </button>
+              {admin && (
+                <button
+                  className="btn btn-danger "
+                  onClick={() => handleDelete(book._id)}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -53,4 +68,4 @@ const ManageAllOrders = () => {
   );
 };
 
-export default ManageAllOrders;
+export default ManageAllBooks;

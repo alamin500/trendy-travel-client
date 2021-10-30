@@ -1,0 +1,12 @@
+.moretour-img {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+.title-tour {
+  font-weight: bold;
+  color: rgb(90, 63, 63);
+}
+.link a {
+  text-decoration: none;
+}

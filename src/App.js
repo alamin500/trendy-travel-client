@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import MyBooking from "./components/MyBooking/MyBooking";
 import BookTour from "./components/BookTour/BookTour";
 import ConfirnOrder from "./components/ConfirmOrder/ConfirnOrder";
+import ManageAllBooks from "./components/ManageAllBooks/ManageAllBooks";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/confirmOrder">
             <ConfirnOrder></ConfirnOrder>
+          </Route>
+          <Route path="/allBooks">
+            <ManageAllBooks></ManageAllBooks>
           </Route>
           <Route path="/services">
             <Services></Services>
