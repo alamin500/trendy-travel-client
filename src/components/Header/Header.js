@@ -16,29 +16,38 @@ const Header = () => {
   return (
     <div>
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          className="nav-body"
+          variant="dark"
+        >
           <Container>
-            <Link to="/">Home</Link>
-
-            <Link to="/services">Services</Link>
-            <Link to="/addServices">Add Services</Link>
-            <Link to="/mybook" className="position-relative my-book">
-              My booking <p className="position-absolute">{books.length}</p>
+            <Link className="nav-home" to="/">
+              Trendy Travel
             </Link>
-            <Link to="/allBooks">All Books</Link>
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav className="me-auto navbar-link">
+                <Link to="/services">Our Packages</Link>
+
                 {!user?.email && <Link to="/login">Login</Link>}
-                <span className="displayname">{user.displayName}</span>
+
                 {user?.email && (
-                  <button className="logout-btn" onClick={logOut}>
-                    {" "}
-                    Log Out
-                  </button>
+                  <div>
+                    <Link to="/mybook" className="position-relative my-book">
+                      My booking{" "}
+                      <p className="position-absolute">{books.length}</p>
+                    </Link>
+                    <Link to="/allBooks">All Books</Link>
+
+                    <span className="displayname">{user.displayName}</span>
+                    <button className="logout-btn" onClick={logOut}>
+                      {" "}
+                      Log Out
+                    </button>
+                  </div>
                 )}
               </Nav>
             </Navbar.Collapse>

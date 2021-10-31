@@ -10,39 +10,45 @@ import MyBooking from "./components/MyBooking/MyBooking";
 import BookTour from "./components/BookTour/BookTour";
 import ConfirnOrder from "./components/ConfirmOrder/ConfirnOrder";
 import ManageAllBooks from "./components/ManageAllBooks/ManageAllBooks";
+import AuthProvider from "./Contexts/AuthProvider";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route path="/mybook">
-            <MyBooking></MyBooking>
-          </Route>
-          <Route path="/login/:tourId">
-            <Login></Login>
-          </Route>
-          <Route path="/confirmOrder">
-            <ConfirnOrder></ConfirnOrder>
-          </Route>
-          <Route path="/allBooks">
-            <ManageAllBooks></ManageAllBooks>
-          </Route>
-          <Route path="/services">
-            <Services></Services>
-          </Route>
-          <Route path="/bookTour/:tourId">
-            <BookTour></BookTour>
-          </Route>
-          <Route path="/addServices">
-            <AddServices></AddServices>
-          </Route>
-          <Route>
-            <Home></Home>
-          </Route>
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route path="/mybook">
+              <MyBooking></MyBooking>
+            </Route>
+            {/* <Route path="/login">
+              <Login></Login>
+            </Route> */}
+            <Route path="/login/:tourId">
+              <Login></Login>
+            </Route>
+            <Route path="/confirmOrder">
+              <ConfirnOrder></ConfirnOrder>
+            </Route>
+            <Route path="/allBooks">
+              <ManageAllBooks></ManageAllBooks>
+            </Route>
+            <Route path="/services">
+              <Services></Services>
+            </Route>
+            <Route path="/bookTour/:tourId">
+              <BookTour></BookTour>
+            </Route>
+            <Route path="/addServices">
+              <AddServices></AddServices>
+            </Route>
+            <Route>
+              <Home></Home>
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

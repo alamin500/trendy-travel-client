@@ -2,12 +2,20 @@ Link {
   text-decoration: none;
 }
 .displayname {
-  color: aliceblue;
+  color: rgb(16, 230, 201);
+  margin: 20px;
+  font-size: 18px;
+}
+.nav-home {
+  color: rgb(16, 230, 201);
+
+  font-size: 30px;
+  text-decoration: none;
 }
 .my-book p {
   height: 23px;
   width: 23px;
-  background: green;
+  background: navbar-linkeen;
   top: -13px;
   right: -11px;
   border-radius: 50%;
@@ -15,4 +23,24 @@ Link {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgb(28, 70, 54);
+}
+.navbar-link a {
+  text-decoration: none;
+  margin: 20px;
+  font-size: 18px;
+  color: white;
+}
+.nav-body {
+  background-color: #166f79;
+}
+.navbar-link a:hover {
+  color: #82b5c0;
+}
+.logout-btn {
+  border-radius: 20px;
+  padding: 6px 8px;
+}
+.navbar-link {
+  align-items: center;
 }
