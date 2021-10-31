@@ -5,12 +5,15 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [username, setUsername] = React.useState(null);
+  const [login, setLogin] = React.useState(null);
   const allContext = useFirebase();
 
   const value = {
     username,
     setUsername,
     allContext,
+    login,
+    setLogin,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

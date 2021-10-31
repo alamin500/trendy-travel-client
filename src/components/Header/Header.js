@@ -44,6 +44,7 @@ const Header = () => {
                       </p>
                     </Link>
                     <Link to="/allBooks">All Books</Link>
+                    <Link to="/addServices">Add Package</Link>
 
                     <span className="displayname">{user.displayName}</span>
                     <button className="logout-btn" onClick={logOut}>

@@ -28,8 +28,11 @@ const Login = () => {
     });
   };
   return (
-    <div>
-      <button className="btn w-100 btn-success" onClick={handleGoogleLogin}>
+    <div className="">
+      <button
+        className="btn w-25 m-5 p-2 btn-success"
+        onClick={handleGoogleLogin}
+      >
         Google Sign In
       </button>
     </div>

@@ -35,18 +35,20 @@ const ManageAllBooks = () => {
   return (
     <div>
       {/* < Form.Check label="Remember me" /> */}
-      <input
-        type="checkbox"
-        id="vehicle1"
-        name="vehicle1"
-        value="Bike"
-        onClick={() => setAdmin(!admin)}
-      />
-      <label for="vehicle1">Admin</label>
       <br />
-
-      <h1>Manage All Orders</h1>
-
+      <h1>Manage All Orders :{books.length}</h1>
+      <div style={{ color: "red" }}>
+        <input
+          type="checkbox"
+          id="vehicle1"
+          name="vehicle1"
+          value="Bike"
+          onClick={() => setAdmin(!admin)}
+        />
+        <label for="vehicle1">
+          <h3>Admin</h3>
+        </label>
+      </div>
       <div className="container mt-5">
         {books.map((book, index) => (
           <div className="row align-items-center mx-5">
@@ -61,7 +63,7 @@ const ManageAllBooks = () => {
                 <img src={book.img} alt="" />
                 <h5>{book.name}</h5>
                 <p>{book.description}</p>
-                <div style={{ width: "120px" }}>
+                <div style={{ width: "140px" }}>
                   {admin && (
                     <button
                       className="btn btn-danger "

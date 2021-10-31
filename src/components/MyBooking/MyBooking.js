@@ -9,6 +9,7 @@ const MyBooking = () => {
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
   console.log(books);
+
   useEffect(() => {
     fetch(`http://localhost:5000/myBooks/${user?.email}`)
       .then((res) => res.json())
@@ -31,15 +32,18 @@ const MyBooking = () => {
     console.log(id);
   };
   return (
-    <div className="container">
+    <div className="container mt-5">
       <h1>My books : {books.length}</h1>
-      {books.map((book) => (
-        <div className="row booking-border">
-          <div className="col-12 col-sm-6 col-lg-12 d-flex justify-content-center align-items-center">
+      {books.map((book, index) => (
+        <div className="row booking-border mx-5">
+          <div className="col-12 col-sm-6 col-lg-11 d-flex justify-content-center align-items-center">
             <div
               style={{ border: "1 px solid #f1f1f1" }}
               className="d-flex mybook-img justify-content-center align-items-center"
             >
+              <div className="col-1">
+                <h3>{index + 1}</h3>
+              </div>
               <img src={book.img} alt="" />
               <h5>{book.name}</h5>
               <p>{book.description}</p>

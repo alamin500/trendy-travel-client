@@ -18,7 +18,7 @@ const AddServices = () => {
   };
   return (
     <div>
-      <h1>This is AddServices</h1>
+      <h1 className="m-3">Add New Package</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("name", { required: true })}
