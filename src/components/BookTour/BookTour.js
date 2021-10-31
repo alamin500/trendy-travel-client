@@ -17,7 +17,7 @@ const BookTour = () => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
-  }, []);
+  }, [success]);
   const value = services.filter((service) => service._id === tourId)[0];
   const myBook = (data) => {
     data.email = user?.email;
