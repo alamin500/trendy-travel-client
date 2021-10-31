@@ -7,7 +7,7 @@ const Register = () => {
   const { user } = useFirebase();
   const onSubmit = (data) => {
     data.email = user?.email;
-    fetch("http://localhost:5000/addServices", {
+    fetch("https://secure-anchorage-89979.herokuapp.com/addServices", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

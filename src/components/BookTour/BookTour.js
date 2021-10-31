@@ -14,7 +14,7 @@ const BookTour = () => {
   const [books, setBooks] = useState([]);
   const { setUsername } = useAuth();
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://secure-anchorage-89979.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [success]);
@@ -24,7 +24,7 @@ const BookTour = () => {
     data._id = `${Math.random()}`;
     setSuccess(true);
     setUsername(books.length + 1);
-    fetch("http://localhost:5000/myBook", {
+    fetch("https://secure-anchorage-89979.herokuapp.com/myBook", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -33,7 +33,7 @@ const BookTour = () => {
       .then((result) => setSuccess(result));
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/myBooks/${user?.email}`)
+    fetch(`https://secure-anchorage-89979.herokuapp.com/myBooks/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, [user.email, success]);

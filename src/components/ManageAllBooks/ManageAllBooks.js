@@ -7,13 +7,13 @@ const ManageAllBooks = () => {
   const [control, setConrol] = useState(false);
   const [admin, setAdmin] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/allBooks`)
+    fetch(`https://secure-anchorage-89979.herokuapp.com/allBooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, [control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteBook/${id}`, {
+    fetch(`https://secure-anchorage-89979.herokuapp.com/deleteBook/${id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })
