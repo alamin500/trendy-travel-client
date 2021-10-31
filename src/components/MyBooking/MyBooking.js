@@ -9,6 +9,7 @@ const MyBooking = () => {
   const { user } = useFirebase();
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
+  const [deletes, setDelete] = useState(false);
   // const [count, setCount] = useState(0);
   console.log(books);
 
@@ -31,6 +32,7 @@ const MyBooking = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
+          alert("Booking Deleted");
           setConrol(!control);
         } else {
           setConrol(false);
@@ -38,7 +40,16 @@ const MyBooking = () => {
       });
     console.log(id);
   };
-  let count = 0;
+  const deleteConfirm = (id) => {
+    let clicked = window.confirm("click to delete");
+    if (clicked == true) {
+      setDelete(true);
+      handleDelete(id);
+    } else {
+      setDelete(false);
+    }
+  };
+  let count = 1;
   return (
     <div className="container mt-5">
       {books.length === 0 ? (
@@ -72,7 +83,7 @@ const MyBooking = () => {
                       <p>{book.description}</p>
                       <button
                         className="btn btn-danger "
-                        onClick={() => handleDelete(book._id)}
+                        onClick={() => deleteConfirm(book._id)}
                       >
                         Delete
                       </button>

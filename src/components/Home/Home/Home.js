@@ -4,6 +4,7 @@ import { Spinner } from "react-bootstrap";
 import AddServices from "../../AddServices/AddServices";
 import Header from "../../Header/Header";
 import Services from "../../Services/Services";
+import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
 import MoreTours from "../MoreTours/MoreTours";
@@ -24,8 +25,9 @@ const Home = () => {
       ) : (
         <div>
           <Banner></Banner>
-          <Services></Services>
+          <Services home={true}></Services>
           <MoreTours></MoreTours>
+          <AboutUs></AboutUs>
           <Footer></Footer>
         </div>
       )}

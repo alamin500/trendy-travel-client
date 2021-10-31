@@ -5,7 +5,8 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Service from "../Service/Service";
 
-const Services = () => {
+const Services = (props) => {
+  const { home = false } = props;
   const [services, setServices] = useState([]);
   console.log(services);
   useEffect(() => {
@@ -19,9 +20,13 @@ const Services = () => {
         <h1 className="service-h1 pt-5" style={{ textAlign: "center" }}>
           OUR PACKAGES
         </h1>
-        {services?.map((service, index) => (
-          <Service key={service.name} service={service}></Service>
-        ))}
+        {services.map((service, i) =>
+          home ? (
+            i < 6 && <Service key={service.id} service={service}></Service>
+          ) : (
+            <Service key={service.id} service={service}></Service>
+          )
+        )}
       </div>
     </div>
   );

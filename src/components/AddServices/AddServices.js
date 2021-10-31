@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useFirebase from "../../hooks/useFirebase";
 
 const AddServices = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useFirebase();
+  const { date, setdate } = useState();
+  console.log(date);
   const onSubmit = (data) => {
+    alert("Added Successfully");
     data.email = user?.email;
     fetch("http://localhost:5000/addServices", {
       method: "POST",
@@ -13,8 +16,7 @@ const AddServices = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-    console.log(data);
+      .then((result) => setdate(result));
   };
   return (
     <div>
