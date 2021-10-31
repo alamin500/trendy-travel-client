@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Spinner, Button } from "react-bootstrap";
 import useFirebase from "../../hooks/useFirebase";
 import "./MyBooking.css";
 
@@ -8,13 +9,19 @@ const MyBooking = () => {
   const { user } = useFirebase();
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
+  // const [count, setCount] = useState(0);
   console.log(books);
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/myBooks/${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setBooks(data));
+  // }, [user.email, control]);
   useEffect(() => {
-    fetch(`http://localhost:5000/myBooks/${user?.email}`)
+    fetch(`http://localhost:5000/allBooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
-  }, [user.email, control]);
+  }, [control]);
 
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteBook/${id}`, {
@@ -31,32 +38,51 @@ const MyBooking = () => {
       });
     console.log(id);
   };
+  let count = 0;
   return (
     <div className="container mt-5">
-      <h1>My books : {books.length}</h1>
-      {books.map((book, index) => (
-        <div className="row booking-border mx-5">
-          <div className="col-12 col-sm-6 col-lg-11 d-flex justify-content-center align-items-center">
-            <div
-              style={{ border: "1 px solid #f1f1f1" }}
-              className="d-flex mybook-img justify-content-center align-items-center"
-            >
-              <div className="col-1">
-                <h3>{index + 1}</h3>
-              </div>
-              <img src={book.img} alt="" />
-              <h5>{book.name}</h5>
-              <p>{book.description}</p>
-              <button
-                className="btn btn-danger "
-                onClick={() => handleDelete(book._id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
+      {books.length === 0 ? (
+        <Button variant="primary" disabled>
+          <Spinner
+            as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          Loading...
+        </Button>
+      ) : (
+        <>
+          <h1>My books</h1>
+          {books.map(
+            (book, index) =>
+              book.email === user.email && (
+                <div className="row booking-border mx-5">
+                  <div className="col-12 col-sm-6 col-lg-11 d-flex justify-content-center align-items-center">
+                    <div
+                      style={{ border: "1 px solid #f1f1f1" }}
+                      className="d-flex mybook-img justify-content-center align-items-center"
+                    >
+                      <div className="col-1">
+                        <h3>{count++}</h3>
+                      </div>
+                      <img src={book.img} alt="" />
+                      <h5>{book.name}</h5>
+                      <p>{book.description}</p>
+                      <button
+                        className="btn btn-danger "
+                        onClick={() => handleDelete(book._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )
+          )}
+        </>
+      )}
     </div>
   );
 };

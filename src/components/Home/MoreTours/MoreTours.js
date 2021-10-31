@@ -1,16 +1,15 @@
 import React from "react";
 import "./MoreTours.css";
+import one from "../../../images/1.png";
+import two from "../../../images/2.png";
+import three from "../../../images/icon-landmark.png";
 
 const MoreTours = () => {
   return (
     <div className="container">
       <div className="row my-5">
         <div className=" d-flex col-12 col-sm-6 col-lg-4">
-          <img
-            className="moretour-img"
-            src="http://www.nicdarkthemes.com/themes/travel/wp/demo/love-travel/wp-content/uploads/sites/3/2018/04/icon-around.png"
-            alt=""
-          />
+          <img className="moretour-img" src={one} alt="" />
           <div className="link text-start">
             <h4 className="title-tour">World Tour</h4>
             <p>
@@ -22,11 +21,7 @@ const MoreTours = () => {
           </div>
         </div>
         <div className=" d-flex col-12 col-sm-6 col-lg-4">
-          <img
-            className="moretour-img"
-            src="http://www.nicdarkthemes.com/themes/travel/wp/demo/love-travel/wp-content/uploads/sites/3/2018/04/icon-boat.png"
-            alt=""
-          />
+          <img className="moretour-img" src={two} alt="" />
           <div className="link text-start">
             <h4 className="title-tour">Cruises</h4>
             <p>
@@ -38,11 +33,7 @@ const MoreTours = () => {
           </div>
         </div>
         <div className=" d-flex col-12 col-sm-6 col-lg-4">
-          <img
-            className="moretour-img"
-            src="http://www.nicdarkthemes.com/themes/travel/wp/demo/love-travel/wp-content/uploads/sites/3/2018/04/icon-landmark.png"
-            alt=""
-          />
+          <img className="moretour-img" src={three} alt="" />
           <div className=" link text-start">
             <h4 className="title-tour">Best Tours</h4>
             <p>

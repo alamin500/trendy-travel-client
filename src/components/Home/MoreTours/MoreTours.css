@@ -10,3 +10,6 @@
 .link a {
   text-decoration: none;
 }
+#root {
+  overflow: hidden;
+}
