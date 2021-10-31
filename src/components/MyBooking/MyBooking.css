@@ -1,0 +1,11 @@
+.mybook-img img {
+  height: 80px;
+}
+.booking-border {
+  border: 1px solid gainsboro;
+  margin: 10px;
+}
+.mybook-img p,
+h5 {
+  padding: 10px;
+}

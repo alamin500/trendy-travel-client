@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import useFirebase from "../../hooks/useFirebase";
+import "./MyBooking.css";
 
 const MyBooking = () => {
   const { user } = useFirebase();
@@ -30,14 +31,18 @@ const MyBooking = () => {
     console.log(id);
   };
   return (
-    <div>
+    <div className="container">
       <h1>My books : {books.length}</h1>
       {books.map((book) => (
-        <div className="row ">
-          <div className="col-12 col-sm-6 col-lg-3 service-card d-flex justify-content-center align-items-center">
-            <div>
+        <div className="row booking-border">
+          <div className="col-12 col-sm-6 col-lg-12 d-flex justify-content-center align-items-center">
+            <div
+              style={{ border: "1 px solid #f1f1f1" }}
+              className="d-flex mybook-img justify-content-center align-items-center"
+            >
               <img src={book.img} alt="" />
-              <h1>{book.name}</h1>
+              <h5>{book.name}</h5>
+              <p>{book.description}</p>
               <button
                 className="btn btn-danger "
                 onClick={() => handleDelete(book._id)}

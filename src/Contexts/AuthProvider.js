@@ -4,7 +4,7 @@ import useFirebase from "../hooks/useFirebase";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [username, setUsername] = React.useState("Daryl");
+  const [username, setUsername] = React.useState(null);
   const allContext = useFirebase();
 
   const value = {

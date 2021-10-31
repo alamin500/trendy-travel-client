@@ -46,24 +46,36 @@ const ManageAllBooks = () => {
       <br />
 
       <h1>Manage All Orders</h1>
-      {books.map((book) => (
-        <div className="row ">
-          <div className="col-12 col-sm-6 col-lg-3 service-card d-flex justify-content-center align-items-center">
-            <div>
-              <img src={book.img} alt="" />
-              <h1>{book.name}</h1>
-              {admin && (
-                <button
-                  className="btn btn-danger "
-                  onClick={() => handleDelete(book._id)}
-                >
-                  Delete
-                </button>
-              )}
+
+      <div className="container mt-5">
+        {books.map((book, index) => (
+          <div className="row align-items-center mx-5">
+            <div className="col-1">
+              <h3>{index + 1}</h3>
+            </div>
+            <div className="booking-border col-12 col-sm-6 col-lg-11 d-flex justify-content-center align-items-center m-0 mb-2">
+              <div
+                style={{ border: "1 px solid #f1f1f1" }}
+                className="d-flex mybook-img justify-content-center align-items-center"
+              >
+                <img src={book.img} alt="" />
+                <h5>{book.name}</h5>
+                <p>{book.description}</p>
+                <div style={{ width: "120px" }}>
+                  {admin && (
+                    <button
+                      className="btn btn-danger "
+                      onClick={() => handleDelete(book._id)}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

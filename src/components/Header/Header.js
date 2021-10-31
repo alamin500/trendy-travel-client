@@ -3,11 +3,12 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
 import "./Header.css";
-
+import useAuth from "../../hooks/useAuth";
 const Header = () => {
   const { user, logOut } = useFirebase();
   const [books, setBooks] = useState([]);
-  console.log(user.displayName);
+  const { username } = useAuth();
+  console.log(username);
   useEffect(() => {
     fetch(`http://localhost:5000/myBooks/${user?.email}`)
       .then((res) => res.json())
@@ -24,7 +25,7 @@ const Header = () => {
         >
           <Container>
             <Link className="nav-home" to="/">
-              Trendy Travel
+              <strong>Trendy Travel</strong>
             </Link>
 
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -32,13 +33,15 @@ const Header = () => {
               <Nav className="me-auto navbar-link">
                 <Link to="/services">Our Packages</Link>
 
-                {!user?.email && <Link to="/login">Login</Link>}
+                {!user?.email && <Link to="/login"></Link>}
 
                 {user?.email && (
                   <div>
                     <Link to="/mybook" className="position-relative my-book">
                       My booking{" "}
-                      <p className="position-absolute">{books.length}</p>
+                      <p className="position-absolute">
+                        {username ? username : books.length}
+                      </p>
                     </Link>
                     <Link to="/allBooks">All Books</Link>
 

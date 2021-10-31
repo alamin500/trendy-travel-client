@@ -5,13 +5,14 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
 import "./BookTour.css";
-
+import useAuth from "../../hooks/useAuth";
 const BookTour = () => {
   const { tourId } = useParams();
   const { user } = useFirebase();
   const [services, setServices] = useState([]);
   const [success, setSuccess] = useState(null);
-
+  const [books, setBooks] = useState([]);
+  const { setUsername } = useAuth();
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
@@ -23,6 +24,7 @@ const BookTour = () => {
     data._id = `${Math.random()}`;
     console.log("data", data);
     setSuccess(true);
+    setUsername(books.length + 1);
     fetch("http://localhost:5000/myBook", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -31,7 +33,13 @@ const BookTour = () => {
       .then((res) => res.json())
       .then((result) => setSuccess(result));
   };
-  console.log("value", value);
+  useEffect(() => {
+    fetch(`http://localhost:5000/myBooks/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, [user.email, success]);
+
+  console.log("value", books);
   return (
     <div>
       <div className="d-flex container justify-content-center align-items-center">

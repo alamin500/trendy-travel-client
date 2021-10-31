@@ -12,6 +12,9 @@ Link {
   font-size: 30px;
   text-decoration: none;
 }
+.nav-home:hover {
+  color: #82b5c0;
+}
 .my-book p {
   height: 23px;
   width: 23px;
