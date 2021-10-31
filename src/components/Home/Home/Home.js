@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-
-import AddServices from "../../AddServices/AddServices";
-import Header from "../../Header/Header";
 import Services from "../../Services/Services";
 import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";

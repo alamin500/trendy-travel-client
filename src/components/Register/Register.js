@@ -14,7 +14,6 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then((result) => console.log(result));
-    console.log(data);
   };
   return (
     <div>

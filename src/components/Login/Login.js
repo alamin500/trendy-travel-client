@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import useFirebase from "../../hooks/useFirebase";
 import { useParams } from "react-router";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { getAuth } from "@firebase/auth";
 import { useEffect } from "react";
 
 const Login = () => {
   const { googleSignIn } = useFirebase();
   const { tourId } = useParams();
-  console.log(tourId);
   const auth = getAuth();
-
   const location = useLocation();
   const [services, setServices] = useState([]);
-
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())

@@ -8,7 +8,6 @@ const Header = () => {
   const { user, logOut } = useFirebase();
   const [books, setBooks] = useState([]);
   const { username } = useAuth();
-  console.log(username);
   useEffect(() => {
     fetch(`http://localhost:5000/myBooks/${user?.email}`)
       .then((res) => res.json())

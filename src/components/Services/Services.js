@@ -8,7 +8,6 @@ import Service from "../Service/Service";
 const Services = (props) => {
   const { home = false } = props;
   const [services, setServices] = useState([]);
-  console.log(services);
   useEffect(() => {
     fetch("https://secure-anchorage-89979.herokuapp.com/services")
       .then((res) => res.json())

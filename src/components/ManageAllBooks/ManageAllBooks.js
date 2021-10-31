@@ -1,17 +1,11 @@
 import React from "react";
-
 import { useEffect } from "react";
 import { useState } from "react";
-import { Form } from "react-bootstrap";
-// import useFirebase from "../../hooks/useFirebase";
 
 const ManageAllBooks = () => {
-  // const { user } = useFirebase();
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [deletes, setDelete] = useState(false);
-  console.log(books);
   useEffect(() => {
     fetch(`http://localhost:5000/allBooks`)
       .then((res) => res.json())
@@ -32,20 +26,16 @@ const ManageAllBooks = () => {
           setConrol(false);
         }
       });
-    console.log(id);
   };
   const deleteConfirm = (id) => {
     let clicked = window.confirm("click to delete");
     if (clicked == true) {
-      setDelete(true);
       handleDelete(id);
     } else {
-      setDelete(false);
     }
   };
   return (
     <div>
-      {/* < Form.Check label="Remember me" /> */}
       <br />
       <h1>Manage All Orders :{books.length}</h1>
       <div style={{ color: "red" }}>

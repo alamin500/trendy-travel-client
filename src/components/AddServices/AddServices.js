@@ -5,8 +5,7 @@ import useFirebase from "../../hooks/useFirebase";
 const AddServices = () => {
   const { register, handleSubmit } = useForm();
   const { user } = useFirebase();
-  const { date, setdate } = useState();
-  console.log(date);
+  const { setdate } = useState();
   const onSubmit = (data) => {
     alert("Added Successfully");
     data.email = user?.email;

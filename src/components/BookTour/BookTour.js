@@ -2,10 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import useFirebase from "../../hooks/useFirebase";
 import "./BookTour.css";
 import useAuth from "../../hooks/useAuth";
+import { Button } from "react-bootstrap";
 const BookTour = () => {
   const { tourId } = useParams();
   const { user } = useFirebase();
@@ -22,7 +22,6 @@ const BookTour = () => {
   const myBook = (data) => {
     data.email = user?.email;
     data._id = `${Math.random()}`;
-    console.log("data", data);
     setSuccess(true);
     setUsername(books.length + 1);
     fetch("http://localhost:5000/myBook", {
@@ -38,8 +37,6 @@ const BookTour = () => {
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, [user.email, success]);
-
-  console.log("value", books);
   return (
     <div>
       <div className="d-flex container justify-content-center align-items-center">
@@ -48,7 +45,7 @@ const BookTour = () => {
           <h5>Name: {user.displayName}</h5>
           <h5>{user.email}</h5>
         </div>
-        <div className="m-5">
+        <div className="m-5 w-50">
           <h1>Product Information</h1>
           <div className="d-flex justify-content-center align-items-center">
             <div>
@@ -61,7 +58,6 @@ const BookTour = () => {
           </div>
         </div>
       </div>
-      {/* <Link to="/confirmOrder" className="btn btn-warning"> */}
       {success ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           {" "}
@@ -70,7 +66,6 @@ const BookTour = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-
               background: "",
             }}
           >
@@ -93,13 +88,11 @@ const BookTour = () => {
           </h3>
         </div>
       ) : (
-        <button onClick={() => myBook(value)}>
+        <Button className="btn btn-success" onClick={() => myBook(value)}>
           {" "}
           Place Order {value?.name.toLowerCase()}
-        </button>
+        </Button>
       )}
-
-      {/* </Link> */}
     </div>
   );
 };

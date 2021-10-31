@@ -10,14 +10,6 @@ const MyBooking = () => {
   const [books, setBooks] = useState([]);
   const [control, setConrol] = useState(false);
   const [deletes, setDelete] = useState(false);
-  // const [count, setCount] = useState(0);
-  console.log(books);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/myBooks/${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setBooks(data));
-  // }, [user.email, control]);
   useEffect(() => {
     fetch(`http://localhost:5000/allBooks`)
       .then((res) => res.json())
@@ -38,7 +30,6 @@ const MyBooking = () => {
           setConrol(false);
         }
       });
-    console.log(id);
   };
   const deleteConfirm = (id) => {
     let clicked = window.confirm("click to delete");

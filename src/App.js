@@ -20,9 +20,6 @@ function App() {
           <Route path="/mybook">
             <MyBooking></MyBooking>
           </Route>
-          {/* <Route path="/login">
-              <Login></Login>
-            </Route> */}
           <Route path="/login/:tourId">
             <Login></Login>
           </Route>

@@ -1,7 +1,5 @@
 import React from "react";
-
 import "./AboutUs.css";
-// import doctor1 from "../../../images/Doctor/doctor4.jfif";
 
 const AboutUs = () => {
   return (
